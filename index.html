@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faustino | Cosmos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="custom-cursor"><i class="fa-solid fa-star"></i></div>
+    <canvas id="cosmos-canvas"></canvas>
+
+    <audio id="bg-music" src="assets/bg.mp3" loop></audio>
+
+    <div class="ui-layer" id="intro-screen" style="cursor: pointer;">
+        <h2 class="sub-text" style="font-size: 1.5rem; letter-spacing: 15px; margin: 0; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'">CLICK TO ENTER</h2>
+    </div>
+
+    <div class="ui-layer hidden" id="main-menu">
+        <h1 class="main-title">FAUSTINO</h1>
+        <div class="minimal-nav">
+            <span class="nav-btn" data-target="me">ME</span>
+            <span class="nav-btn" data-target="about">ABOUT</span>
+            <span class="nav-btn" data-target="socials">SOCIALS</span>
+            <span class="nav-btn" data-target="games">GAMES</span>
+        </div>
+    </div>
+
+    <div class="content-layer hidden" id="content-me">
+        <button class="back-btn"><i class="fa-solid fa-angle-left"></i> RETURN</button>
+        <div class="minimal-card text-center">
+            <img src="assets/pfp.jpg" alt="Profile" class="profile-pic">
+            <h2>FAUSTINO</h2>
+            <p class="sub-text"><i class="fa-brands fa-discord"></i> @faustino</p>
+        </div>
+    </div>
+
+    <div class="content-layer hidden" id="content-about">
+        <button class="back-btn"><i class="fa-solid fa-angle-left"></i> RETURN</button>
+        <div class="minimal-card text-center">
+            <p class="large-text">I am a dev that only uses his knowldge to create useless shit.</p>
+        </div>
+    </div>
+
+    <div class="content-layer hidden" id="content-socials">
+        <button class="back-btn"><i class="fa-solid fa-angle-left"></i> RETURN</button>
+        <div class="minimal-card links">
+            <a href="https://github.com/faustinuuu" class="social-link">GITHUB</a>
+            <a href="https://x.com/Faustino1103" class="social-link">X / TWITTER</a>
+            <a href="https://www.instagram.com/joaosantos1103/" class="social-link">INSTAGRAM</a>
+        </div>
+    </div>
+
+    <div class="content-layer hidden" id="content-games">
+        <button class="back-btn"><i class="fa-solid fa-angle-left"></i> RETURN</button>
+        <div class="minimal-card games-list">
+            <a href="https://steamcommunity.com/id/naoacertanobonecu/" data-username="tino#d528" class="game-link"
+                target="_blank">DEAD BY DAYLIGHT</a>
+            <a href="https://tracker.gg/valorant/profile/riot/faustino%2300001/overview?platform=pc&playlist=competitive"
+                data-username="faustino#00001" class="game-link" target="_blank">VALORANT</a>
+            <a href="https://www.roblox.com/users/45759822/profile" data-username="@lyaswhisper" class="game-link"
+                target="_blank">ROBLOX</a>
+            <a href="https://op.gg/lol/summoners/euw/Pykeopath-666" data-username="Pykeopath#666" class="game-link"
+                target="_blank">LEAGUE</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
