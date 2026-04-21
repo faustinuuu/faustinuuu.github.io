@@ -181,16 +181,37 @@ document.addEventListener('DOMContentLoaded', () => {
         textCanvas.width = width;
         textCanvas.height = height;
 
-        let fontSize = Math.min(width / 5, 200);
-        if (text.length > 5) {
-            fontSize = Math.min(width / (text.length * 0.7), 180);
-        }
         tCtx.fillStyle = 'white';
-        tCtx.font = `bold ${fontSize}px 'Outfit', sans-serif`;
-        tCtx.textAlign = 'center';
-        tCtx.textBaseline = 'middle';
+        tCtx.strokeStyle = 'white';
+        tCtx.lineWidth = width < 768 ? 10 : 25;
+        tCtx.lineJoin = 'round';
+        tCtx.lineCap = 'round';
 
-        tCtx.fillText(text, width / 2, height / 3.5);
+        if (text === 'heart') {
+            let cx = width / 2;
+            let cy = height / 3.5;
+            let size = Math.min(width / 100, 12);
+            if (size < 4) size = 4;
+            
+            tCtx.beginPath();
+            for (let t = 0; t <= Math.PI * 2; t += 0.05) {
+                let x = 16 * Math.pow(Math.sin(t), 3);
+                let y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+                if (t === 0) tCtx.moveTo(cx + x * size, cy + y * size);
+                else tCtx.lineTo(cx + x * size, cy + y * size);
+            }
+            tCtx.closePath();
+            tCtx.stroke();
+        } else {
+            let fontSize = Math.min(width / 5, 200);
+            if (text.length > 5) {
+                fontSize = Math.min(width / (text.length * 0.7), 180);
+            }
+            tCtx.font = `bold ${fontSize}px 'Outfit', sans-serif`;
+            tCtx.textAlign = 'center';
+            tCtx.textBaseline = 'middle';
+            tCtx.fillText(text, width / 2, height / 3.5);
+        }
 
         const textData = tCtx.getImageData(0, 0, width, height).data;
         textCoordinates = [];
@@ -330,6 +351,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 2000); 
         });
     });
+
+    const meName = document.getElementById('me-name');
+    if (meName) {
+        meName.addEventListener('mouseover', () => {
+            if (currentSection === 'me') {
+                particles.forEach(p => {
+                    p.vx = (Math.random() - 0.5) * 20;
+                    p.vy = (Math.random() - 0.5) * 20;
+                });
+                getTextCoordinates('heart');
+            }
+        });
+        meName.addEventListener('mouseout', () => {
+            if (currentSection === 'me') {
+                particles.forEach(p => {
+                    p.vx = (Math.random() - 0.5) * 20;
+                    p.vy = (Math.random() - 0.5) * 20;
+                });
+                getTextCoordinates('ME');
+            }
+        });
+    }
 
     backBtns.forEach(btn => {
         btn.addEventListener('click', () => {
