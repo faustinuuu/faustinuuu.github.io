@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (text === 'heart') {
             let cx = width / 2;
             let cy = height / 3.5;
-            let size = Math.min(width / 100, 12);
+            let size = Math.min(width / 100, 12) * 0.7;
             if (size < 4) size = 4;
             
             tCtx.beginPath();
@@ -352,9 +352,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const meName = document.getElementById('me-name');
-    if (meName) {
-        meName.addEventListener('mouseover', () => {
+    const mePfp = document.getElementById('me-pfp');
+    if (mePfp) {
+        mePfp.addEventListener('mouseover', () => {
             if (currentSection === 'me') {
                 particles.forEach(p => {
                     p.vx = (Math.random() - 0.5) * 20;
@@ -363,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 getTextCoordinates('heart');
             }
         });
-        meName.addEventListener('mouseout', () => {
+        mePfp.addEventListener('mouseout', () => {
             if (currentSection === 'me') {
                 particles.forEach(p => {
                     p.vx = (Math.random() - 0.5) * 20;
